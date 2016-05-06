@@ -34,7 +34,7 @@ public class Core {
 			// If all are white...go forward?
 			// Add wait times
 			Delay.msDelay(100);
-			if(mColorID >= 7) {	// If only middle sensor sees black, go forward
+			if(mColorID == 13) {	// If only middle sensor sees black, go forward
 				System.out.printf("Moving forward, [LC: " + lColorID + ", MC: " + mColorID + ", RC: " + rColorID + "]\n");
 				lm.setSpeed(100);
 				rm.setSpeed(100);
@@ -42,21 +42,21 @@ public class Core {
 				rm.forward();
 				
 			}
-			else if(lColorID >= 7) {		// If left sensor sees black, turn left sharply
+			else if(lColorID == 13) {		// If left sensor sees black, turn left sharply
 				System.out.printf("Moving right sharply, [LC: " + lColorID + ", MC: " + mColorID + ", RC: " + rColorID + "]\n");
 				lm.stop();
 				rm.setSpeed(700);
 				rm.forward();
 				
 			}
-			else if(rColorID >= 7) {		// If right sensor sees black, turn right sharply
+			else if(rColorID == 13) {		// If right sensor sees black, turn right sharply
 				System.out.printf("Moving left sharply, [LC: " + lColorID + ", MC: " + mColorID + ", RC: " + rColorID + "]\n");
 				rm.stop();
 				lm.setSpeed(700);
 				lm.forward();
 				
 			}
-			 else if(lColorID >= 7 && mColorID >= 7 && rColorID >= 7) {		// If all sensors see black, go ...
+			 else if(lColorID == 13 && mColorID == 13 && rColorID == 13) {		// If all sensors see black, go ...
 				System.out.printf("Moving forward, [LC: " + lColorID + ", MC: " + mColorID + ", RC: " + rColorID + "]\n");
 				lm.setSpeed(100);
 				rm.setSpeed(100);
@@ -64,6 +64,12 @@ public class Core {
 				rm.forward();
 				
 			}
+			 else {
+				 lm.setSpeed(100);
+					rm.setSpeed(100);
+					lm.forward();
+					rm.forward(); 
+			 }
 		}
 		// Dump pong balls
 		
